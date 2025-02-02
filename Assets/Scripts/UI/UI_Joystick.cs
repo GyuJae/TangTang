@@ -21,15 +21,13 @@ public class UI_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         background.transform.position = eventData.position;
         cursor.transform.position = eventData.position;
         _touchPos = eventData.position;
-        
-        // TODO Manager Game
     }
 
     public void OnPointerUp(PointerEventData eventData)
-    {
+    { 
         cursor.transform.position = _touchPos;
         
-        // TODO Manager Game
+        Managers.Game.MoveDir = Vector2.zero;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -41,6 +39,6 @@ public class UI_Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         var newPosition = _touchPos + moveDir * moveDist;
         cursor.transform.position = newPosition;
         
-        // TODO Manager Game
+        Managers.Game.MoveDir = moveDir;
     }
 }
